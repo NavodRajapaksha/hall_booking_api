@@ -13,7 +13,6 @@ import { HallService } from '../../services/hall';
 export class HallList implements OnInit {
 
   halls: any[] = [];
-
   loading = true;
 
   constructor(
@@ -22,49 +21,29 @@ export class HallList implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     this.getAllHalls();
-
   }
 
   getAllHalls() {
-
     this.loading = true;
-
     this.hallService.getAllActiveHalls().subscribe({
-
       next: (data: any) => {
-
-        console.log(data);
-
         this.halls = data;
-
-        this.loading = false;
-
+        this.loading = false;  // 👈 data ආවම false වෙනවා
       },
-
       error: (err) => {
-
         console.log(err);
-
         this.loading = false;
-
       }
-
     });
-
   }
 
   addHall() {
-
     this.router.navigate(['/hall-form']);
-
   }
 
   editHall(id: string) {
-
     this.router.navigate(['/hall-form', id]);
-
   }
 
 }
