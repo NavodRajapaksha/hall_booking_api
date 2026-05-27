@@ -1,0 +1,24 @@
+.form-label { font-size: 0.88rem; color: #444; margin-bottom: 0.3rem; }
+.form-control { border-radius: 10px; border: 1px solid #e0e0e8;
+  font-size: 0.9rem; padding: 0.6rem 0.9rem; }
+.form-control:focus { border-color: #4361ee;
+  box-shadow: 0 0 0 3px rgba(67,97,238,0.1); }
+
+.facility-card {
+  border: 2px solid #e0e0e8;
+  border-radius: 12px;
+  padding: 0.8rem 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  user-select: none;
+}
+.facility-card:hover { border-color: #4361ee; background: #f5f7ff; }
+.facility-card.active { border-color: #1a1a2e; background: #f0f2fa; }
+.facility-icon { display: block; font-size: 1.5rem; margin-bottom: 0.3rem; }
+.facility-label { font-size: 0.78rem; font-weight: 600; color: #444; }
+.facility-check {
+  position: absolute; top: 6px; right: 8px;
+  color: #1a1a2e; font-size: 0.75rem; font-weight: 700;
+}

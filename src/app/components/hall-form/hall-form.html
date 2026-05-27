@@ -1,0 +1,97 @@
+<div class="container py-4" style="max-width: 620px;">
+
+  <!-- Page Title -->
+  <div class="d-flex align-items-center gap-3 mb-4">
+    <button (click)="cancel()"
+      style="background:none; border:none; font-size:1.3rem; cursor:pointer;">⬅️</button>
+    <h4 style="margin:0; font-weight:700; color:#1a1a2e;">
+      {{ isEditMode ? '✏️ Edit Hall' : '➕ Add New Hall' }}
+    </h4>
+  </div>
+
+  <!-- Success / Error -->
+  <div *ngIf="successMessage"
+    class="alert alert-success py-2 mb-3" style="font-size:0.88rem;">
+    ✅ {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage"
+    class="alert alert-danger py-2 mb-3" style="font-size:0.88rem;">
+    ❌ {{ errorMessage }}
+  </div>
+
+  <!-- Form Card -->
+  <div class="card border-0 shadow-sm" style="border-radius:16px;">
+    <div class="card-body p-4">
+
+      <!-- Name -->
+      <div class="mb-3">
+        <label class="form-label fw-600">Hall Name <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" [(ngModel)]="hall.name"
+          placeholder="e.g. Conference Room A" />
+      </div>
+
+      <!-- Location -->
+      <div class="mb-3">
+        <label class="form-label fw-600">Location <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" [(ngModel)]="hall.location"
+          placeholder="e.g. Floor 2, Building B" />
+      </div>
+
+      <!-- Capacity -->
+      <div class="mb-4">
+        <label class="form-label fw-600">Capacity <span class="text-danger">*</span></label>
+        <input type="number" class="form-control" [(ngModel)]="hall.capacity"
+          placeholder="e.g. 50" min="1" />
+      </div>
+
+      <!-- Facilities -->
+      <p class="fw-600 mb-2" style="color:#444;">Facilities</p>
+      <div class="row g-3 mb-4">
+
+        <div class="col-4">
+          <div class="facility-card" [class.active]="hall.hasProjector"
+            (click)="hall.hasProjector = !hall.hasProjector">
+            <span class="facility-icon">📽️</span>
+            <span class="facility-label">Projector</span>
+            <span class="facility-check" *ngIf="hall.hasProjector">✓</span>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="facility-card" [class.active]="hall.hasAc"
+            (click)="hall.hasAc = !hall.hasAc">
+            <span class="facility-icon">❄️</span>
+            <span class="facility-label">AC</span>
+            <span class="facility-check" *ngIf="hall.hasAc">✓</span>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="facility-card" [class.active]="hall.hasWhiteboard"
+            (click)="hall.hasWhiteboard = !hall.hasWhiteboard">
+            <span class="facility-icon">📋</span>
+            <span class="facility-label">Whiteboard</span>
+            <span class="facility-check" *ngIf="hall.hasWhiteboard">✓</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Buttons -->
+      <div class="d-flex gap-2">
+        <button (click)="submit()" [disabled]="loading"
+          class="btn btn-primary flex-fill"
+          style="border-radius:10px; padding:0.65rem; font-weight:600;
+                 background:#1a1a2e; border-color:#1a1a2e;">
+          {{ loading ? 'Saving...' : (isEditMode ? 'Update Hall' : 'Save Hall') }}
+        </button>
+        <button (click)="cancel()"
+          class="btn btn-outline-secondary"
+          style="border-radius:10px; padding:0.65rem 1.5rem;">
+          Cancel
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="login-card">
+    <h2 class="login-title">Welcome back</h2>
+    <p class="signup-text">Hall Booking System</p>
+
+    <div class="mb-3">
+      <label class="form-label">Username (NIC)</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="username"
+        placeholder="Enter your NIC"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <div class="password-wrapper">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          class="form-control"
+          [(ngModel)]="password"
+          placeholder="Enter your password"
+        />
+        <button class="toggle-password" type="button" (click)="togglePwd()">
+          {{ showPassword ? '🙈' : '👁️' }}
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger py-1 mb-3" style="font-size:0.85rem">
+      {{ errorMessage }}
+    </div>
+
+    <button class="btn-signin" (click)="login()">Sign In</button>
+  </div>
+</div>

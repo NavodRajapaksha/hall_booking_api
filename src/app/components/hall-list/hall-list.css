@@ -1,0 +1,9 @@
+
+.badge-facility {
+  background: #f0f2fa;
+  color: #333;
+  border-radius: 20px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
