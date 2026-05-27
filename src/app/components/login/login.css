@@ -1,0 +1,176 @@
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0;
+      background: linear-gradient(135deg, #eceef8 0%, #f5f4fb 40%, #e8eaf6 70%, #f0eef8 100%);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .login-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2.8rem 2.4rem 2.2rem;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 4px 40px rgba(100, 90, 180, 0.07);
+    }
+
+    .login-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.85rem;
+      color: #1a1a2e;
+      letter-spacing: -0.3px;
+      margin-bottom: 0.4rem;
+    }
+
+    .signup-text {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 1.8rem;
+    }
+
+    .signup-text a {
+      color: #4361ee;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .signup-text a:hover { text-decoration: underline; }
+
+    .form-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #444;
+      margin-bottom: 0.35rem;
+    }
+
+    .form-control {
+      border: 1px solid #e0e0e8;
+      border-radius: 10px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.9rem;
+      color: #2d2d3a;
+      background: #fafafa;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-control::placeholder { color: #bbb; font-size: 0.88rem; }
+
+    .form-control:focus {
+      border-color: #4361ee;
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+      background: #fff;
+      outline: none;
+    }
+
+    .password-wrapper { position: relative; }
+
+    .password-wrapper .form-control { padding-right: 2.8rem; }
+
+    .toggle-password {
+      position: absolute;
+      right: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .toggle-password:hover { color: #555; }
+
+    .forgot-link {
+      font-size: 0.82rem;
+      color: #4361ee;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .forgot-link:hover { text-decoration: underline; }
+
+    .btn-signin {
+      background: #1a1a2e;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 0.72rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      width: 100%;
+      letter-spacing: 0.2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-signin:hover { background: #2d2d4e; transform: translateY(-1px); }
+    .btn-signin:active { transform: translateY(0); }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.4rem 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #ebebf0;
+    }
+
+    .divider span {
+      font-size: 0.72rem;
+      color: #bbb;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-social {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0.6rem 1rem;
+      border: 1px solid #e0e0e8;
+      border-radius: 10px;
+      background: #fff;
+      color: #333;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-social:hover { border-color: #c0c0d0; background: #f8f8fc; }
+    .btn-social img { width: 18px; height: 18px; }
+
+    .security-note {
+      text-align: center;
+      font-size: 0.72rem;
+      color: #c0c0cc;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+    }
+
+    .is-invalid { border-color: #e05c5c !important; }
+
+    .invalid-feedback {
+      font-size: 0.78rem;
+      color: #e05c5c;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .was-validated .form-control:invalid ~ .invalid-feedback,
+    .show-error .invalid-feedback { display: block; }
