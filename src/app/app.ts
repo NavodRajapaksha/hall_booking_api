@@ -2,13 +2,17 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Login } from './components/login/login';
 import { Header } from './components/header/header';
+import { HallForm } from './components/hall-form/hall-form';
+import { HallList } from './components/hall-list/hall-list';
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
     Login,
-    Header
+    Header,
+    HallForm,
+    HallList
 
   ],
   templateUrl: './app.html',

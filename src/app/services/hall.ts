@@ -14,10 +14,12 @@ export class HallService {
   ) {}
 
   private getHeaders() {
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.userAuth.getToken()}`,
-    });
+    const token = this.userAuth.getToken();
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+    return new HttpHeaders(headers);
   }
 
   getAllActiveHalls() {
@@ -39,9 +41,8 @@ export class HallService {
   }
 
   getHallById(id: string) {
-    return this.http.get(
-      `${this.BASE_URL}/production/hall/get/one/${id}`,
-      { headers: this.getHeaders() }
-    );
+    return this.http.get(`${this.BASE_URL}/production/hall/get/one/${id}`, {
+      headers: this.getHeaders(),
+    });
   }
 }

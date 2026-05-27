@@ -20,6 +20,7 @@ export class HallForm implements OnInit {
   hall = {
     name: '',
     location: '',
+    description: '',
     capacity: 0,
     hasProjector: false,
     hasAc: false,
@@ -52,16 +53,23 @@ export class HallForm implements OnInit {
     this.successMessage = '';
     this.errorMessage = '';
 
+    if (!this.hall.name || !this.hall.location || !this.hall.capacity) {
+      this.errorMessage = 'Please fill all required fields.';
+      this.loading = false;
+      return;
+    }
+
     if (this.isEditMode) {
       const updateData = { id: this.hallId, ...this.hall };
       this.hallService.updateHall(updateData).subscribe({
         next: () => {
           this.loading = false;
           this.successMessage = 'Hall updated successfully!';
-          setTimeout(() => this.router.navigate(['/halls']), 1500);
+          setTimeout(() => this.router.navigate(['/hall-list']), 1500);
         },
-        error: () => {
+        error: (err) => {
           this.loading = false;
+          console.log('Update error:', err);
           this.errorMessage = 'Failed to update hall.';
         },
       });
@@ -70,10 +78,11 @@ export class HallForm implements OnInit {
         next: () => {
           this.loading = false;
           this.successMessage = 'Hall saved successfully!';
-          setTimeout(() => this.router.navigate(['/halls']), 1500);
+          setTimeout(() => this.router.navigate(['/hall-list']), 1500);
         },
-        error: () => {
+        error: (err) => {
           this.loading = false;
+          console.log('Save error:', err);
           this.errorMessage = 'Failed to save hall.';
         },
       });
@@ -81,6 +90,6 @@ export class HallForm implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/halls']);
+    this.router.navigate(['/hall-list']);
   }
 }

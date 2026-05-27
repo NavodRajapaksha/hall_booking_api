@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { User } from '../../services/user';
 import { UserAuth } from '../../services/user-auth';
 import { NgIf } from '@angular/common';
-import { provideHttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -31,8 +30,25 @@ export class Login {
   login() {
     this.user.login({ username: this.username, password: this.password }).subscribe({
       next: (res: any) => {
-        this.userAuth.setToken(res.jwtToken || res.token || res);
-        this.router.navigate(['/halls']);
+        const token =
+          res.jwtToken     ||
+          res.token        ||
+          res.accessToken  ||
+          res.access_token ||
+          res.jwt;
+
+        if (!token) {
+          this.errorMessage = 'Login failed: could not read token from server response.';
+          return;
+        }
+
+        this.userAuth.setToken(token);
+
+        if (res.roles) {
+          this.userAuth.setRoles(res.roles);
+        }
+
+        this.router.navigate(['/hall-list']);
       },
       error: () => {
         this.errorMessage = 'Invalid username or password';

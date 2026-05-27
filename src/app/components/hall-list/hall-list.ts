@@ -1,47 +1,70 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HallService } from '../../services/hall';
 import { NgFor, NgIf } from '@angular/common';
+import { HallService } from '../../services/hall';
 
 @Component({
   selector: 'app-hall-list',
+  standalone: true,
   imports: [NgFor, NgIf],
   templateUrl: './hall-list.html',
-  styleUrl: './hall-list.css',
+  styleUrls: ['./hall-list.css'],
 })
 export class HallList implements OnInit {
+
   halls: any[] = [];
+
   loading = true;
-  errorMessage = '';
 
   constructor(
     private hallService: HallService,
     private router: Router
   ) {}
 
-  ngOnInit() {
-    this.loadHalls();
+  ngOnInit(): void {
+
+    this.getAllHalls();
+
   }
 
-  loadHalls() {
+  getAllHalls() {
+
     this.loading = true;
+
     this.hallService.getAllActiveHalls().subscribe({
+
       next: (data: any) => {
-        this.halls = Array.isArray(data) ? data : [data];
+
+        console.log(data);
+
+        this.halls = data;
+
         this.loading = false;
+
       },
-      error: () => {
-        this.errorMessage = 'Failed to load halls.';
+
+      error: (err) => {
+
+        console.log(err);
+
         this.loading = false;
-      },
+
+      }
+
     });
+
   }
 
   addHall() {
-    this.router.navigate(['/halls/add']);
+
+    this.router.navigate(['/hall-form']);
+
   }
 
   editHall(id: string) {
-    this.router.navigate(['/halls/edit', id]);
+
+    this.router.navigate(['/hall-form', id]);
+
   }
+
 }
